@@ -1,0 +1,8 @@
+{"time":"2026-02-11T02:05:18.622989-08:00","level":"INFO","msg":"main: starting server","port-filename":"/var/folders/xg/nmbd_q1138v1rt4gcykn13t40000gn/T/tmpq2fjbcqt/port-47846.txt","pid":47846,"log-level":0,"disable-analytics":false,"shutdown-on-parent-exit":false,"enable-dcgm-profiling":false}
+{"time":"2026-02-11T02:05:18.625041-08:00","level":"INFO","msg":"server: will exit if parent process dies","ppid":47846}
+{"time":"2026-02-11T02:05:18.624992-08:00","level":"INFO","msg":"server: accepting connections","addr":{"Name":"/var/folders/xg/nmbd_q1138v1rt4gcykn13t40000gn/T/wandb-47846-47854-842149875/socket","Net":"unix"}}
+{"time":"2026-02-11T02:05:18.72631-08:00","level":"INFO","msg":"connection: ManageConnectionData: new connection created","id":"1"}
+{"time":"2026-02-11T02:05:18.751604-08:00","level":"INFO","msg":"handleInformInit: received","streamId":"h2tipbal","id":"1"}
+{"time":"2026-02-11T02:05:18.939223-08:00","level":"INFO","msg":"handleInformInit: stream started","streamId":"h2tipbal","id":"1"}
+{"time":"2026-02-11T02:08:29.878009-08:00","level":"INFO","msg":"handleInformFinish: finish message received","streamId":"h2tipbal","id":"1"}
+{"time":"2026-02-11T02:08:29.883036-08:00","level":"INFO","msg":"handleInformFinish: stream closed","streamId":"h2tipbal","id":"1"}

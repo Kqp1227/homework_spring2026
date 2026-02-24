@@ -1,0 +1,41 @@
+{
+  "os": "macOS-15.6-arm64-arm-64bit",
+  "python": "CPython 3.11.14",
+  "startedAt": "2026-02-11T10:05:18.465473Z",
+  "args": [
+    "--policy-type",
+    "mse"
+  ],
+  "program": "/Users/qpkong/Desktop/courses/CS285/homework_spring2026/hw1/src/hw1_imitation/train.py",
+  "codePath": "hw1/src/hw1_imitation/train.py",
+  "codePathLocal": "src/hw1_imitation/train.py",
+  "git": {
+    "remote": "https://github.com/Kqp1227/homework_spring2026",
+    "commit": "b1ffc4d99055a14ff37f0111204e1eac0f4a6fb0"
+  },
+  "email": "qpkong27@gmail.com",
+  "root": "/Users/qpkong/Desktop/courses/CS285/homework_spring2026/hw1",
+  "host": "qpkongs-MacBook-Air.local",
+  "executable": "/Users/qpkong/Desktop/courses/CS285/homework_spring2026/hw1/.venv/bin/python3",
+  "cpu_count": 10,
+  "cpu_count_logical": 10,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "387494318080"
+    }
+  },
+  "memory": {
+    "total": "25769803776"
+  },
+  "apple": {
+    "name": "Apple M4",
+    "ecpuCores": 6,
+    "pcpuCores": 4,
+    "gpuCores": 10,
+    "memoryGb": 24,
+    "swapTotalBytes": "23622320128",
+    "ramTotalBytes": "25769803776"
+  },
+  "writerId": "tadztvi5mnkjroyluf8wmwcwn7wo17oz"
+}

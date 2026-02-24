@@ -1,0 +1,12 @@
+{"time":"2026-02-11T02:05:18.752291-08:00","level":"INFO","msg":"stream: starting","core version":"0.23.1"}
+{"time":"2026-02-11T02:05:18.938805-08:00","level":"INFO","msg":"stream: created new stream","id":"h2tipbal"}
+{"time":"2026-02-11T02:05:18.939113-08:00","level":"INFO","msg":"handler: started","stream_id":"h2tipbal"}
+{"time":"2026-02-11T02:05:18.939128-08:00","level":"INFO","msg":"writer: started","stream_id":"h2tipbal"}
+{"time":"2026-02-11T02:05:18.939215-08:00","level":"INFO","msg":"stream: started","id":"h2tipbal"}
+{"time":"2026-02-11T02:05:18.939574-08:00","level":"INFO","msg":"sender: started","stream_id":"h2tipbal"}
+{"time":"2026-02-11T02:08:29.618272-08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-02-11T02:08:29.872149-08:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-02-11T02:08:29.878276-08:00","level":"INFO","msg":"stream: closing","id":"h2tipbal"}
+{"time":"2026-02-11T02:08:29.878923-08:00","level":"INFO","msg":"handler: closed","stream_id":"h2tipbal"}
+{"time":"2026-02-11T02:08:29.87925-08:00","level":"INFO","msg":"sender: closed","stream_id":"h2tipbal"}
+{"time":"2026-02-11T02:08:29.879285-08:00","level":"INFO","msg":"stream: closed","id":"h2tipbal"}
