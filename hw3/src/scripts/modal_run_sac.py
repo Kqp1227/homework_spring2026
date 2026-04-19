@@ -10,7 +10,7 @@ APP_NAME = "hw3-ql"
 NETRC_PATH = Path("~/.netrc").expanduser()
 PROJECT_DIR = "/root/project"
 VOLUME_PATH = "/root/vol"
-DEFAULT_GPU = "T4"
+DEFAULT_GPU = "A10G"
 DEFAULT_CPU = 2.0
 DEFAULT_MEMORY = 4096  # MB
 volume = modal.Volume.from_name("hw3-ql-volume", create_if_missing=True)

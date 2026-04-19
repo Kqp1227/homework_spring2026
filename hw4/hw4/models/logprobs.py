@@ -43,7 +43,21 @@ def compute_per_token_logprobs(
     #
     # Respect enable_grad: when enable_grad=False this function should not build an
     # autograd graph.
-    raise NotImplementedError("student TODO: compute_per_token_logprobs")
+    ctx = torch.enable_grad() if enable_grad else torch.no_grad()
+    with ctx:
+        out = model(input_ids=input_ids, attention_mask=attention_mask, use_cache=False)
+        logits = out.logits  # [B, L, V]
+        # logits[:, :-1, :] predicts tokens input_ids[:, 1:]
+        shift_logits = logits[:, :-1, :]  # [B, L-1, V]
+        targets = input_ids[:, 1:]        # [B, L-1]
+        B, Lm1, V = shift_logits.shape
+        nll = F.cross_entropy(
+            shift_logits.reshape(B * Lm1, V),
+            targets.reshape(B * Lm1),
+            reduction="none",
+        )  # [B*(L-1)]
+        logprobs = -nll.reshape(B, Lm1)  # [B, L-1]
+    return logprobs
 
 
 def build_completion_mask(
@@ -66,7 +80,23 @@ def build_completion_mask(
     # prompt_input_len is the (padded) prompt length before completion tokens were
     # appended. You can use attention_mask to exclude padding; pad_token_id is passed
     # for convenience but a direct attention-mask-based solution is fine.
-    raise NotImplementedError("student TODO: build_completion_mask")
+    # mask[:, t] = 1 iff token at position t+1 is a completion token (not prompt, not padding)
+    # Completion tokens start at index prompt_input_len in input_ids
+    # In the per-token logprob space (indexed 0..L-2), completion starts at index prompt_input_len-1
+    B, L = input_ids.shape
+    device = input_ids.device
+
+    # Create position indices for the per-token logprob space: [B, L-1]
+    # Position t in logprob space corresponds to token t+1 in input_ids
+    token_positions = torch.arange(1, L, device=device).unsqueeze(0).expand(B, -1)  # [B, L-1]
+
+    # A token is a completion token if its position >= prompt_input_len
+    is_completion = (token_positions >= prompt_input_len).float()
+
+    # Also exclude padding: attention_mask[:, 1:] tells us if token t+1 is real
+    is_not_padding = attention_mask[:, 1:].float()
+
+    return is_completion * is_not_padding
 
 
 def masked_sum(x: torch.Tensor, mask: torch.Tensor, eps: float = 1e-8) -> torch.Tensor:
@@ -110,4 +140,6 @@ def approx_kl_from_logprobs(
     #                             = KL(p_new || p_ref).
     #
     # The clamp to [-20, 20] is for numerical stability / variance control.
-    raise NotImplementedError("student TODO: approx_kl_from_logprobs")
+    delta = torch.clamp(ref_logprobs - new_logprobs, -log_ratio_clip, log_ratio_clip)
+    per_token = torch.exp(delta) - delta - 1.0
+    return masked_mean(per_token, mask, eps=eps)
